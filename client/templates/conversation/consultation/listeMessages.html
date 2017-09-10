@@ -1,0 +1,30 @@
+<template name="listeMessages">
+  <div class="container liste-messages">
+    {{#each conversationActuelle.messages }}
+      {{> messageDiscussion }}
+    {{/each }}
+  </div>
+</template>
+
+<template name="messageDiscussion">
+  {{#if equals auteur auteurActuel }}
+    <blockquote class="message blockquote-reverse" style="border-right: 5px solid #64b5f6;">
+      {{> messageDetail}}
+    </blockquote>
+  {{else}}
+    <blockquote class="message blockquote " style="border-left: 5px solid #64b5f6;">
+      {{> messageDetail}}
+    </blockquote>
+  {{/if}}
+</template>
+
+<template name="messageDetail">
+  <p>
+    {{ message }}
+  </p>
+  <footer class="blockquote-footer">
+    <cite title="date">
+      {{ auteur }} le {{ formatDateTime dateMessage }}
+    </cite>
+  </footer>
+</template>

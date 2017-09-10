@@ -13,3 +13,18 @@ Router.route('/creation-conversation', {
   template: 'creationconversation',
   name: 'creation-conversation'
 });
+
+Router.route('/conversation/:hashId', {
+  template: 'consultationconversation',
+  name: 'consultationconversation',
+  data: function() {
+    return {
+      'conversationActuelle': ConversationsCollection.findOne({
+        hashId: this.params.hashId
+      })
+    };
+  },
+  subscriptions: function() {
+    return Meteor.subscribe('conversation', this.params.hashId);
+  }
+});

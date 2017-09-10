@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
+import { Router } from 'meteor/iron:router';
 
 Template.creationconversation.events({
   'submit form[name="form-creation-conversation"]': function(event) {
@@ -12,6 +13,9 @@ Template.creationconversation.events({
       function(error, result) {
         if (error) {
           return alert('Erreur : '+error.error);
+        }
+        else {
+          Router.go('consultationconversation', {hashId:result})
         }
       }
     );

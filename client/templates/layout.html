@@ -9,12 +9,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{pathFor route='home'}}">Really Free Chat</a>
+          <a class="navbar-brand" href="{{pathFor route='accueil'}}">Really Free Chat</a>
         </div>
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><a href="{{pathFor route='creation-conversation' }}">Nouvelle discussion</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          {{> nomAuteur}}
         </ul>
       </div>
     </div>

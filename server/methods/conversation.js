@@ -15,6 +15,35 @@ Meteor.methods({
     jsShaInstance = new jsSHA("SHA3-256", "TEXT");
     jsShaInstance.update(baseTexteHash);
     document.hashId = jsShaInstance.getHash("HEX");
-    ConversationsCollection.insert(document);
+    var _id = ConversationsCollection.insert(document);
+    return ConversationsCollection.findOne({_id:_id}).hashId;
+  }
+});
+
+Meteor.methods({
+  'conversation.envoiMessage': function (hashId, messageObj) {
+    check(hashId, String);
+    check(messageObj, {
+      auteur: Match.Where((auteur) => {
+        check(auteur, String);
+        return auteur.length || auteur.length <= 30;
+      }),
+      message: Match.Where((message) => {
+        check(message, String);
+        return message.length;
+      })
+    });
+    messageObj.dateMessage = new Date();
+    return ConversationsCollection.update(
+      {hashId : hashId},
+      {
+        $push: {
+          messages: {
+            $each: [messageObj],
+            $position: 0
+          }
+        }
+      }
+    );
   }
 });
