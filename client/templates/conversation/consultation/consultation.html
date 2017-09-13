@@ -1,7 +1,8 @@
 <template name="consultationconversation">
+  {{>controle}}
   {{#if conversationActuelle.chiffree }}
     {{>motDePasse}}
   {{/if}}
-  {{>listeMessages}}
   {{>envoiMessageConversation}}
+  {{>listeMessages}}
 </template>

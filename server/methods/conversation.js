@@ -47,3 +47,18 @@ Meteor.methods({
     );
   }
 });
+
+Meteor.methods({
+  'conversation.supprimerMessages': function (hashId) {
+    check(hashId, String);
+    return ConversationsCollection.update(
+      {hashId : hashId},
+      {
+        $set: {
+          messages: []
+        }
+      }
+    );
+  }
+});
+
