@@ -62,3 +62,9 @@ Meteor.methods({
   }
 });
 
+Meteor.methods({
+  'conversation.remove': function (hashId) {
+    check(hashId, String);
+    return ConversationsCollection.remove({hashId: hashId});
+  }
+});
