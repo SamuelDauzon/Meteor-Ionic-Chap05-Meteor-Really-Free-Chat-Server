@@ -10,5 +10,8 @@
     "jssha": "^2.3.1",
     "meteor-node-stubs": "~0.2.4",
     "moment": "^2.18.1"
+  },
+  "devDependencies": {
+    "frisby": "^2.0.5"
   }
 }
