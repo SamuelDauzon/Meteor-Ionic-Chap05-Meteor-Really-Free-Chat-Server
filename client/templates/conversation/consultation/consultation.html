@@ -1,4 +1,5 @@
 <template name="consultationconversation">
+  <h3 style="width:100%;text-align:center;">{{ conversationActuelle.nom }} {{ newMessage }}</h3>
   {{>controle}}
   {{#if conversationActuelle.chiffree }}
     {{>motDePasse}}

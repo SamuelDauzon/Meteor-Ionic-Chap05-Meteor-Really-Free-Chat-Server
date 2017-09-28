@@ -1,3 +1,6 @@
+import { Template } from 'meteor/templating';
+
+
 Template.motDePasse.events({
   'submit form[name="entrerMdp"]': function(event) {
     event.preventDefault();

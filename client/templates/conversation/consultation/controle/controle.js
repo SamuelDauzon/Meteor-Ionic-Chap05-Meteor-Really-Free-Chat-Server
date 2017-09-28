@@ -16,7 +16,6 @@ Template.controle.events({
   }
 });
 
-
 Template.controle.events({
   'submit form[name="supprimerConversation"]': function(event) {
     event.preventDefault();
