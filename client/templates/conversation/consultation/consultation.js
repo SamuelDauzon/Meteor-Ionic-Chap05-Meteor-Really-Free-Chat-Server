@@ -32,6 +32,24 @@ Template.consultationconversation.helpers({
 				Session.set("messageNb", Template.parentData(0).conversationActuelle.messages.length);
 			}
 		}
-    return "Nouveau message";
+  },
+  qrCodeText: function() {
+    return window.location.href;
   }
 });
+
+Template.consultationconversation.events({
+  'click button#showQrCode': function(event) {
+    event.preventDefault();
+    document.querySelector('#qrcodeBloc').style.display = "block";
+    document.querySelector('#showQrCode').style.display = "none";
+    event.stopPropagation();
+  },
+  'click button#hideQrCode': function(event) {
+    event.preventDefault();
+    document.querySelector('#qrcodeBloc').style.display = "none";
+    document.querySelector('#showQrCode').style.display = "block";
+    event.stopPropagation();
+  }
+});
+

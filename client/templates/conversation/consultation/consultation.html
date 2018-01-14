@@ -1,6 +1,12 @@
 <template name="consultationconversation">
-  <h3 style="width:100%;text-align:center;">{{ conversationActuelle.nom }} {{ newMessage }}</h3>
+  <h3 style="width:100%;text-align:center;">Discussion privée : {{ conversationActuelle.nom }} {{ newMessage }}</h3>
   {{>controle}}
+  <button type="submit" id="showQrCode" class="btn btn-default">Afficher le QRCode</button>
+  <div id="qrcodeBloc" style="display:none;">
+    {{> QRCode text=qrCodeText size="128px" }}
+    {{ qrCodeText }}
+    <button type="submit" id="hideQrCode" class="btn btn-default">Cacher le QRCode</button>
+  </div>
   {{#if conversationActuelle.chiffree }}
     {{>motDePasse}}
   {{/if}}
